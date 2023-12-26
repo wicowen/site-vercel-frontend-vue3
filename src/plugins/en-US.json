@@ -1,1 +1,15 @@
-{}
+{
+    "login": {
+        "Welcome": "Welcome",
+        "Address": "Address",
+        "Port": "Port",
+        "Account": "Account",
+        "Password": "Password",
+        "Remember_me": "Remember me",
+        "Sign_in": "Sign in",
+        "Enter_IP": "Enter IP",
+        "Enter_account": "Enter account",
+        "Enter_password": "Enter password",
+        "This_field_is_required": "This field is required"
+    }
+}

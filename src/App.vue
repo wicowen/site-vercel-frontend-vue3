@@ -2,8 +2,9 @@
 
 // import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
-import { storeToRefs } from 'pinia'
-import { useGeneralStore } from '@/stores'
+// import { storeToRefs } from 'pinia'
+// import { useGeneralStore } from '@/stores'
+
 // import UserModal from '@/components/NavbarModal/UserModal.vue'
 // import ReportSettingModal from '@/components/NavbarModal/ReportSettingModal.vue'
 // import AboutModal from '@/components/NavbarModal/AboutModal.vue'

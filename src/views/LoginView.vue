@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { setCookie, getCookie } from '@/composables/cookie'
 import { ref, onUnmounted, watch, onMounted } from "vue"
-import { swalErrorModal } from '@/composables/swalModal'
-import { storeToRefs } from 'pinia'
+// import { swalErrorModal } from '@/composables/swalModal'
+
+// import { storeToRefs } from 'pinia'
 // import { useAuthStore } from '@/stores'
 // import { getIp } from '@/composables/apiHelper'
 import type { CurrentUser } from '@/composables/models'
-import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+// import { useI18n } from 'vue-i18n';
+// const { t } = useI18n();
+
 // const { login, encryptPassword, decryptPassword } = useAuthStore()
 // const { isFinishLoginProcess } = storeToRefs(useAuthStore())
 
@@ -61,7 +63,8 @@ const handleSignIn = async (address: string, port: string, account: string, pass
 
     console.log('handleSignIn', temp);
 
-    if (userData.value.account !== 'admin') temp.password = encryptPassword(temp.password)
+    // if (userData.value.account !== 'admin') temp.password = encryptPassword(temp.password)
+
     if (isRememberMe.value) {
         setCookie('address', temp.address, 10)
         setCookie('port', temp.port, 10)
@@ -72,18 +75,18 @@ const handleSignIn = async (address: string, port: string, account: string, pass
         setCookie('account', '', 10)
     }
     // const url = getIp(userData.value.address, userData.value.port)
-    const result: number = await login(temp)
+    // const result: number = await login(temp)
 
-    console.log('handleSignIn', result);
+    // console.log('handleSignIn', result);
     
 
-    if (result === 401) {
-        userData.value.account = ''
-        userData.value.password = ''
-        swalErrorModal.fire(t('swalErrorModal.Invalid_username_or_password'))
-    } else if (result === 0) {
-        swalErrorModal.fire(t('swalErrorModal.Unable_to_establish_connection_with_server'))
-    }
+    // if (result === 401) {
+    //     userData.value.account = ''
+    //     userData.value.password = ''
+    //     swalErrorModal.fire(t('swalErrorModal.Invalid_username_or_password'))
+    // } else if (result === 0) {
+    //     swalErrorModal.fire(t('swalErrorModal.Unable_to_establish_connection_with_server'))
+    // }
 
 }
 
@@ -117,8 +120,11 @@ onUnmounted(() => {
 <template>
     <div class="container">
         <div class="wrapper">
+
             <div class="title">{{ $t("login.Welcome") }}</div>
+
             <div class="login">
+
                 <div class="ip" :class="{ unfilled: isUnFilled.ip }">
                     <div class="ip-wrapper">
                         <div class="ip__address">
@@ -134,6 +140,7 @@ onUnmounted(() => {
                     </div>
                     <span v-show="isUnFilled.ip" class="warning__text">{{ $t('login.This_field_is_required') }}</span>
                 </div>
+
                 <div class="account" :class="{ unfilled: isUnFilled.account }">
                     <label for="" class="account__label">{{ $t("login.Account") }}</label>
                     <input autocomplete="new-password" required type="account" class="account__input"
@@ -157,6 +164,7 @@ onUnmounted(() => {
                     <span v-show="isUnFilled.password" class="warning__text">{{ $t('login.This_field_is_required') }}</span>
                 </div>
             </div>
+
             <div class="remember">
                 <label class="remember__checkbox">
                     <input v-model="isRememberMe" type="checkbox">
@@ -164,14 +172,17 @@ onUnmounted(() => {
                 </label>
                 <div class="remember__text">{{ $t("login.Remember_me") }}</div>
             </div>
+
             <button class="signInBtn"
-                @click.prevent="handleSignIn(userData.address, userData.port, userData.account, userData.password)">{{
-                    $t("login.Sign_in") }}</button>
+                @click.prevent="handleSignIn(userData.address, userData.port, userData.account, userData.password)">{{ $t("login.Sign_in") }}
+            </button>
         </div>
     </div>
-    <div v-if="!isFinishLoginProcess" class="loader-mask">
+
+    <!-- <div v-if="!isFinishLoginProcess" class="loader-mask">
         <img alt="img failed" src="\loader.gif">
-    </div>
+    </div> -->
+
 </template>
 
 <style scoped lang="scss">

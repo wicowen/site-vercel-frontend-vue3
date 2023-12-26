@@ -1,1 +1,15 @@
-{}
+{
+    "login": {
+        "Welcome": "歡迎",
+        "Address": "主機位置",
+        "Port": "Port",
+        "Account": "帳號",
+        "Password": "密碼",
+        "Remember_me": "記住登入資訊",
+        "Sign_in": "登入",
+        "Enter_IP": "請輸入 IP",
+        "Enter_account": "請輸入帳號",
+        "Enter_password": "請輸入密碼",
+        "This_field_is_required": "此欄位為必填項目"
+    }
+}
