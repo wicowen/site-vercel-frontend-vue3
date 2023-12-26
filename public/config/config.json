@@ -1,0 +1,12 @@
+{
+    "Notify_signalR_port": "15674",
+    "Sentinel_signalR_port": "15674",
+    "Frame_signalR_port": "5002",
+    "Tfa_signalR_port": "5002",
+    "Vd_signalR_port": "5002",
+    "Lpdr_signalR_port": "5002",
+    "Monitor_signalR_port": "13001",
+    "rtsp_port": "8888",
+    "mapKey": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJodHRwczpcL1wvd3d3LmhjY3AuZ292LnR3IiwibmFtZSI6InJkQGdveW91cmxpZmUuY29tIiwiaWF0IjoxNjM3MDUxNjI0LCJvYmplY3RzIjpbIlwvbWFwc1wvanMiLCJcL21hcHNcL3N0YXRpYyIsIlwvbWFwc1wvZW1iZWQiLCJcL3BsYWNlXC9nZW9jb2RlIiwiXC9wbGFjZVwvZmluZHBsYWNlZnJvbXRleHQiLCJcL3BsYWNlXC9uZWFyYnlzZWFyY2giLCJcL3BsYWNlXC90ZXh0c2VhcmNoIiwiXC9wbGFjZVwvYXV0b2NvbXBsZXRlIiwiXC9yb3V0ZVwvY2FyIiwiXC9kYXRhIiwiXC9zdHlsZXMiLCJcL3Nwcml0ZXMiLCJcL2ZvbnRzIiwiXC9kYXRhXC9zY2hvb2wtZGlzdHJpY3QiLCJcL3ByZW1pdW1cL2hvdXNpbmciLCJcL3ByZW1pdW1cL2hvdXNpbmdcL3NjaG9vbGRpc3RyaWN0cyIsIlwvcm91dGVcL2RpcmVjdGlvbnMiLCJcL3JvdXRlXC9kaXN0YW5jZW1hdHJpeCIsIlwvcm91dGVcL3RyaXAiLCJcL3JvYWRcL25lYXJlc3RSb2FkcyIsIlwvcm9hZFwvc25hcFRvUm9hZHMiXSwiZXhwIjoxOTUzNzk0MDI0fQ.M7-HTFrRlTgUW98yS8us2lHwQvoujGu_ItaUnzjfsFk",
+    "roi_mask_ratio": 0.05
+}
