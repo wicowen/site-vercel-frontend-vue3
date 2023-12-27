@@ -22,12 +22,12 @@ export const getIp = (ip: string, _port: string) => {
   return baseURL;
 };
 
-export let apiHelper = axios.create({
+export const apiHelper = axios.create({
   baseURL,
   timeout: 30000,
 });
 
-let refreshApiHelper = () => {  
+const refreshApiHelper = () => {  
 
   //請求攔截器
   apiHelper.interceptors.request.use(

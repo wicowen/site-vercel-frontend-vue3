@@ -8,8 +8,8 @@ import { ref, onUnmounted, watch, onMounted } from "vue"
 // import { getIp } from '@/composables/apiHelper'
 import type { CurrentUser } from '@/composables/models'
 
-import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
+// import { useI18n } from 'vue-i18n';
+// const { t } = useI18n();
 
 // const { login, encryptPassword, decryptPassword } = useAuthStore()
 // const { isFinishLoginProcess } = storeToRefs(useAuthStore())
