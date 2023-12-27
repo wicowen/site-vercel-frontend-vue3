@@ -121,46 +121,57 @@ onUnmounted(() => {
     <div class="container">
         <div class="wrapper">
 
-            <div class="title">{{ $t("login.Welcome") }}</div>
+            <!-- <div class="title">{{ $t("login.Welcome") }}</div> -->
+            <div class="title"></div>
 
             <div class="login">
 
                 <div class="ip" :class="{ unfilled: isUnFilled.ip }">
                     <div class="ip-wrapper">
-                        <div class="ip__address">
+                        <!-- <div class="ip__address">
                             <label for="" class="ip__address__label">{{ $t("login.Address") }}</label>
-                            <input autocomplete="new-password" required type="text" class="ip__address__input"
+                            <input autocomplete="" required type="text" class="ip__address__input"
                                 :placeholder="$t('login.Enter_IP')" v-model="userData.address">
                         </div>
                         <div class="ip__port">
                             <label for="" class="ip__port__label">{{ $t("login.Port") }}</label>
-                            <input autocomplete="new-password" required type="text" class="ip__port__input"
+                            <input autocomplete="" required type="text" class="ip__port__input"
                                 v-model="userData.port">
-                        </div>
+                        </div> -->
                     </div>
-                    <span v-show="isUnFilled.ip" class="warning__text">{{ $t('login.This_field_is_required') }}</span>
+                    <!-- <span v-show="isUnFilled.ip" class="warning__text">{{ $t('login.This_field_is_required') }}</span> -->
                 </div>
 
                 <div class="account" :class="{ unfilled: isUnFilled.account }">
                     <label for="" class="account__label">{{ $t("login.Account") }}</label>
-                    <input autocomplete="new-password" required type="account" class="account__input"
-                        :placeholder="$t('login.Enter_account')" v-model="userData.account">
+                    <input autocomplete="" required type="account" class="account__input"
+                        :placeholder="$t('login.Enter_account')"
+                        v-model="userData.account"
+                    >
                     <span v-show="isUnFilled.account" class="warning__text">{{ $t('login.This_field_is_required') }}</span>
                 </div>
+
                 <div class="password" :class="{ unfilled: isUnFilled.password }">
                     <label for="" class="password__label">{{ $t("login.Password") }}</label>
-                    <input autocomplete="new-password"
+
+                    <input autocomplete=""
                         @keyup.enter="handleSignIn(userData.address, userData.port, userData.account, userData.password)"
-                        required v-if="isShowPassword" type="password" class="password__input"
-                        :placeholder="$t('login.Enter_password')" v-model="userData.password">
-                    <input autocomplete="new-password"
+                        required v-if="!isShowPassword" type="password" class="password__input" 
+                        :placeholder="$t('login.Enter_password')"
+                        v-model="userData.password"
+                    >
+                    <input autocomplete=""
                         @keyup.enter="handleSignIn(userData.address, userData.port, userData.account, userData.password)"
-                        required v-else type="text" class="password__input" :placeholder="$t('login.Enter_password')"
-                        v-model="userData.password">
+                        required v-else type="text" class="password__input"
+                        :placeholder="$t('login.Enter_password')"
+                        v-model="userData.password"
+                    >
+
                     <button @click.prevent="showPassword" class="password__icon">
                         <img alt="img failed" v-if="isShowPassword" src="\visibility.svg">
                         <img alt="img failed" v-else src="\visibility_off.svg">
                     </button>
+
                     <span v-show="isUnFilled.password" class="warning__text">{{ $t('login.This_field_is_required') }}</span>
                 </div>
             </div>
@@ -201,7 +212,7 @@ onUnmounted(() => {
     align-items: center;
     justify-content: space-between;
     width: 25rem;
-    height: 30rem;
+    height: 24rem;
     background: #3B414A;
     box-shadow: 0px 4px 10px 0px #00000080;
     border-radius: 8px;
@@ -227,14 +238,14 @@ onUnmounted(() => {
     }
 }
 
-.title {
-    width: 100%;
-    height: 2.8rem;
-    line-height: 2.8rem;
-    margin: 1.5rem 0;
-    font-size: 32px;
-    text-align: center;
-}
+// .title {
+//     width: 100%;
+//     height: 2.8rem;
+//     line-height: 2.8rem;
+//     margin: 1.5rem 0;
+//     font-size: 32px;
+//     text-align: center;
+// }
 
 .login {
     display: flex;
