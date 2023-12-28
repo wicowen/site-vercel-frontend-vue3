@@ -1,6 +1,6 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import NavBar from '@/components/NavBar.vue';
-import ToolBar from '@/components/Record/Toolbar.vue'
+import TableToolbar from '@/components/Record/TableToolbar.vue'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import ToolBar from '@/components/Record/Toolbar.vue'
     </header>
     <main class="record">
         <div class="record__container">
-            <ToolBar />
+            <TableToolbar />
             <RouterView />
         </div>
     </main>

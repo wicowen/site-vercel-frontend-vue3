@@ -5,6 +5,7 @@ import { authApi, settingApi } from '@/apis'
 import { setCookie, getCookie } from '@/composables/cookie'
 import { useChannelStore } from '@/stores'
 import AES from 'crypto-js/aes'
+
 import { lib } from 'crypto-js'
 import Utf8 from 'crypto-js/enc-utf8'
 import encUtf8 from 'crypto-js/enc-utf8';
@@ -36,16 +37,16 @@ export const useAuthStore = defineStore({
         //密碼AES加密
         encryptPassword(password: string) {
             const key = Utf8.parse(this.secretKey)
-            let iv = lib.WordArray.create([2703151127, 1775954017, 1323287681, 1902108193])
+            const iv = lib.WordArray.create([2703151127, 1775954017, 1323287681, 1902108193])
             const cipherText = AES.encrypt(password, key, { iv }).toString()
             return cipherText
         },
         //密碼AES解密
         decryptPassword(cipherText: string) {
             const key = Utf8.parse(this.secretKey)
-            let iv = lib.WordArray.create([2703151127, 1775954017, 1323287681, 1902108193])
-            var bytes = AES.decrypt(cipherText, key, { iv });
-            var originalObj = bytes.toString(encUtf8)
+            const iv = lib.WordArray.create([2703151127, 1775954017, 1323287681, 1902108193])
+            const bytes = AES.decrypt(cipherText, key, { iv });
+            const originalObj = bytes.toString(encUtf8)
             return originalObj
         },
         async login(_user: CurrentUser) {
@@ -84,23 +85,23 @@ export const useAuthStore = defineStore({
             }
         },
 
-        async ezproAuthenticate(username: string, password: string) {
-            try {
-                const result = await authApi.reqEzproAuth(username, password)
-                setCookie('x-runtime-guid', result.data.token, 10)
-                await this.testAuthenticate(result.data.token)
-                return result.data.token
-            } catch (error: any) {
-                console.log(error)
-            }
-        },
-        async testAuthenticate(token: string) {
-            try {
-                const result = await authApi.testEzpro(token)
-            } catch (error: any) {
-                console.log(error)
-            }
-        },
+        // async ezproAuthenticate(username: string, password: string) {
+        //     try {
+        //         const result = await authApi.reqEzproAuth(username, password)
+        //         setCookie('x-runtime-guid', result.data.token, 10)
+        //         await this.testAuthenticate(result.data.token)
+        //         return result.data.token
+        //     } catch (error: any) {
+        //         console.log(error)
+        //     }
+        // },
+        // async testAuthenticate(token: string) {
+        //     try {
+        //         const result = await authApi.testEzpro(token)
+        //     } catch (error: any) {
+        //         console.log(error)
+        //     }
+        // },
         async getLicenseStatusApi() {
             try {
                 const result = await settingApi.getLicenseStatus()

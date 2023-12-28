@@ -1,13 +1,12 @@
-<script lang="ts" setup>
-
+<script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import { storeToRefs } from 'pinia'
 import { useRecordStore } from '@/stores'
 import { utils, writeFile } from 'xlsx'
 import router from '@/router';
 import { useRoute } from 'vue-router'
-import { useI18n } from 'vue-i18n';
 
+import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
 const { 
@@ -61,13 +60,15 @@ let category = ref<string>(t('record.Traffic_Flow'))
 // })
 
 // 點擊graph.svg並切換路由到 /Graph
-const gotoGraphPage = () => {
-    router.push('/Graph')
-}
+// const gotoGraphPage = () => {
+//     router.push('/Graph')
+// }
+
 // 點擊list.svg並切換路由到 /Record
-const gotoRecordList = () => {
-    router.push('/Record')
-}
+// const gotoRecordList = () => {
+//     router.push('/Record')
+// }
+
 //下拉視窗開啟時，點擊其他處能自動收闔
 const autoClosedDropdown = (e: Event) => {
     if (!e) return

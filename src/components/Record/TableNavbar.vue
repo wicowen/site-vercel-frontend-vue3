@@ -168,7 +168,8 @@ watch(width, (newWidth) => {
             <div v-show="$route.name === 'tableTFA'" class="vehicleType dropDownMenu">
                 <input v-model="isVehicleTypeMenuOpen" type="checkbox" id="tableVehicleType">
                 <ul class="vehicleType__menu">
-                    <li v-for="(value, key) in transportType" :class="{ 'checked': isTypeShowed[key] }"
+                    <li v-for="(value, key) in transportType" :key="key" 
+                        :class="{ 'checked': isTypeShowed[key] }"
                         class="vehicleType__menu__item btn">
                         <label class="vehicleType__menu__item__checkbox">
                             <input v-model="isTypeShowed[key]" type="checkbox">

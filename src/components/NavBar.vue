@@ -1,38 +1,47 @@
 <script setup lang="ts">
 
 import { ref, onBeforeMount, onMounted, onUnmounted, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+// import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useGeneralStore, useChannelStore, useAuthStore, useRecordStore, useNotifyStore } from '@/stores'
+// import { useGeneralStore, useChannelStore, useAuthStore, useRecordStore, useNotifyStore } from '@/stores'
+import { useGeneralStore, useAuthStore, useNotifyStore } from '@/stores'
 // import NotifyModal from '@/components/NavbarModal/NotifyModal.vue'
 // import type { ConfigItem } from '@/composables/models'
 // import { useConfig } from '@/composables/injectConfig'
-import { getCookie } from "@/composables/cookie";
+// import { getCookie } from "@/composables/cookie";
 import i18n from '@/plugins/i18n'
+// import { useI18n } from 'vue-i18n';
+
 
 // import { Client } from '@stomp/stompjs';
 // let stompClientInform = new Client()
 // let stompClientSentinel = new Client()
 
-const route = useRoute()
-const router = useRouter()
+// const route = useRoute()
+// const router = useRouter()
 // let config: ConfigItem
 
-const { setNotifyStatus, getSignalRApi, getNotifyListApi } = useNotifyStore()
-let { currUser, language } = storeToRefs(useGeneralStore())
-let { isNewNotify, isNotifyOpen } = storeToRefs(useNotifyStore())
-const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal, getCurrUserApi, getLookupCodeApi } = useGeneralStore()
-let { selectedChannelId } = storeToRefs(useChannelStore())
-const { currentType } = storeToRefs(useRecordStore())
-const { logout, setAuthStatus, getLicenseStatusApi } = useAuthStore()
-const { authStatus } = storeToRefs(useAuthStore())
+
+// const { setNotifyStatus, getSignalRApi, getNotifyListApi } = useNotifyStore()
+// let { currUser, language } = storeToRefs(useGeneralStore())
+// let { isNewNotify, isNotifyOpen } = storeToRefs(useNotifyStore())
+// const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal, getCurrUserApi, getLookupCodeApi } = useGeneralStore()
+// let { selectedChannelId } = storeToRefs(useChannelStore())
+// const { currentType } = storeToRefs(useRecordStore())
+// const { logout, setAuthStatus, getLicenseStatusApi } = useAuthStore()
+// const { authStatus } = storeToRefs(useAuthStore())
+
+let { currUser } = storeToRefs(useGeneralStore())
+let { isNotifyOpen } = storeToRefs(useNotifyStore())
+const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal, getCurrUserApi } = useGeneralStore()
+const { logout } = useAuthStore()
 
 const navNotify = ref<HTMLElement | null>(null)
 const navSetting = ref<HTMLImageElement | null>(null);
 const navSpanSetting = ref<HTMLImageElement | null>(null);
 const isSettingOpen = ref<boolean>(false)
 const isDisableTooltip = ref<boolean>(false)
-let address: string = getCookie("connect");
+// let address: string = getCookie("connect");
 const ifShowLanguageBox = ref<boolean>(false)
 const languageBoxRef = ref<HTMLUListElement | null>(null)
 const ifShowUserBox = ref<boolean>(false)
@@ -47,11 +56,11 @@ const currUserGroup = computed(() => {
   return false
 })
 
-// const handleOpenUserModal = () => {
-//   openUserModal()
-//   if (currUser.value.groupId === 1) openUserEditModal()
-//   ifShowUserBox.value = false
-// }
+const handleOpenUserModal = () => {
+  openUserModal()
+  if (currUser.value.groupId === 1) openUserEditModal()
+  ifShowUserBox.value = false
+}
 
 // const getCurrentRouteName = (): void => {
 //   currentType.value = 'tableTFA'
@@ -201,7 +210,12 @@ const seleLanguage = (index: number) => {
 
   localStorage.setItem("language", idx.value);
   // language.value = idx.value
+
   i18n.global.locale = idx.value;
+
+  // const { locale } = useI18n({ useScope: 'global' })
+  // locale.value = idx.value;
+
   location.reload()
   //locale.value = idx // 要切换的语言
   ifShowLanguageBox.value = false
@@ -233,16 +247,17 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
   }
 }
 
-const backHome = () => {
-  // useChannelStore().setSelectedChannelId('')
-  router.push('/')
-}
+// const backHome = () => {
+//   // useChannelStore().setSelectedChannelId('')
+//   router.push('/')
+// }
 </script>
 
 <template>
   <div class="container">
     <div class="brand">
-      <img @click="backHome" alt="img failed" class="brand__logo" src="\Logo.svg">
+      <!-- <img @click="backHome" alt="img failed" class="brand__logo" src="\Logo.svg"> -->
+      <img alt="img" class="brand__logo" src="https://placehold.co/204x86?text=Logo">
     </div>
     <div class="nav">
 
@@ -264,7 +279,8 @@ const backHome = () => {
       </div>
 
       <div class="nav__right">
-        <!-- 語言切換 -->
+
+        <!-- lang menu-->
         <VTooltip>
           <span @click="toggleLanguageBox" class="language nav__right__icon language"
             :class="{ nav__right__icon__active: ifShowLanguageBox }"><img alt="img failed"
@@ -277,7 +293,9 @@ const backHome = () => {
           <li @click="seleLanguage(0)" class="language-box-item">繁體中文</li>
           <li @click="seleLanguage(1)" class="language-box-item">English</li>
         </ul>
-        <!-- 小鈴鐺 -->
+
+
+        <!-- Notify -->
         <VTooltip :disabled="isDisableTooltip">
           <span ref="navNotify" @click.self="isNotifyOpen = !isNotifyOpen" @mouseover="toggleTooltip"
             class="nav__right__icon" :class="{ nav__right__icon__active: isNotifyOpen }">
@@ -289,7 +307,8 @@ const backHome = () => {
             {{ $t('Notification') }}
           </template>
         </VTooltip>
-        <!-- 設定 -->
+
+        <!-- Setting -->
         <VTooltip :disabled="isDisableTooltip">
           <span @mouseover="toggleTooltip" class="nav__right__icon nav__right__more"
             :class="{ nav__right__icon__active: isSettingOpen }">
@@ -317,7 +336,9 @@ const backHome = () => {
             {{ $t('Setting') }}
           </template>
         </VTooltip>
-        <!-- 使用者管理 -->
+
+
+        <!-- User -->
         <VTooltip>
           <span @click="toggleUserBox" class="user nav__right__icon"
             :class="{ nav__right__icon__active: ifShowUserBox }"><img alt="img failed" class="user nav__right__icon_img"

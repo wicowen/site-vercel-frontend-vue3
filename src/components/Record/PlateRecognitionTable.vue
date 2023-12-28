@@ -1,6 +1,7 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 
-import { ref, computed, onBeforeUnmount, watch, onBeforeMount, onMounted } from 'vue'
+// import { ref, computed, onBeforeUnmount, watch, onBeforeMount, onMounted } from 'vue'
+import { ref, computed, onBeforeUnmount, watch, onBeforeMount } from 'vue'
 
 import { storeToRefs } from 'pinia';
 import { useRecordStore } from '@/stores'
@@ -18,7 +19,8 @@ const {
     filterDropDownList, 
     selectList, 
     isHideStreamFilter, 
-    pageSize, totalPage, currentPage, 
+    pageSize, currentPage, 
+    // totalPage,
     filterValue, resetTiming, 
     conditionForLpdrApi: conditionForRecordApi, 
     isDataLoaded, isPageNoLoaded, 
@@ -489,9 +491,9 @@ onBeforeUnmount(() => {
                             src="\photo_table.svg">
                     </td>
                 </tr>
-                <tr v-for=" i  in  blankRowShow " class="blank">
-                </tr>
-            </tbody>
+                    <tr v-for="(item, index) in blankRowShow" :key="index" class="blank">
+                    </tr>
+                </tbody>
 
         </table>
 
@@ -638,7 +640,7 @@ onBeforeUnmount(() => {
     </div>
 
     <div v-else-if="!isDataLoaded || !isPageNoLoaded" class="tableWrapper table-loader">
-        <img alt="img failed" src="\loader.gif">
+        <!-- <img alt="img failed" src="\loader.gif"> -->
     </div>
 
 </template>
