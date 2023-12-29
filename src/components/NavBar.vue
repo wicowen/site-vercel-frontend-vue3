@@ -33,7 +33,8 @@ import i18n from '@/plugins/i18n'
 
 let { currUser } = storeToRefs(useGeneralStore())
 let { isNotifyOpen } = storeToRefs(useNotifyStore())
-const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal, getCurrUserApi } = useGeneralStore()
+// const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal, getCurrUserApi } = useGeneralStore()
+const { openUserModal, openUserEditModal, openReportSettingModal, openAboutModal, openBackSettingModal, openAuthorizationModal } = useGeneralStore()
 const { logout } = useAuthStore()
 
 const navNotify = ref<HTMLElement | null>(null)
@@ -159,7 +160,7 @@ onBeforeMount(async () => {
 })
 
 onMounted(async () => {
-  await getCurrUserApi()
+  // await getCurrUserApi()
   document.addEventListener('click', closedDropdown)
   document.addEventListener("click", closeLanguageBoxOnClickOutside);
   document.addEventListener("click", closeUserBoxOnClickOutside);
