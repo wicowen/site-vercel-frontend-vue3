@@ -1,13 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
 import LoginView from '@/views/LoginView.vue'
 
 const RecordView = () => import('@/views/RecordView.vue')
-const RecordTable = () => import('@/components/RecordTable.vue')
+const RecordTable = () => import('@/components/Record/RecordTable.vue')
 const PlateRecognitionTable = () => import('@/components/Record/PlateRecognitionTable.vue')
 // const TrafficFlowTable = () => import('@/components/Record/TrafficFlowTable.vue')
 // const violationTable = () => import('@/components/Record/violationTable.vue')
+
+
+const LicenseView = () => import('@/views/LicenseView.vue')
+const LicenseTable = () => import('@/components/License/LicenseTable.vue')
+const LicenseListTable = () => import('@/components/License/LicenseListTable.vue')
 
 
 const router = createRouter({
@@ -20,6 +24,36 @@ const router = createRouter({
       component: LoginView
     },
 
+    {
+      path: '/License',
+      name: 'License',
+      component: LicenseView,
+      // meta: { requiresAuth: true, layout: 'defaultLayout' },
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: 'Table',
+          component: LicenseTable,
+          children: [
+            {
+              path: '/License/',
+              redirect: '/License/Table/List'
+            },
+            {
+              path: '/License/Table/',
+              redirect: '/License/Table/List'
+            },
+            {
+              path: 'List',
+              name: 'LicenseListTable',
+              component: LicenseListTable,
+              meta: { requiresAuth: true },
+            },
+          ]
+        },
+      ]
+    },
+    
 
     {
       path: '/Record',
@@ -39,18 +73,18 @@ const router = createRouter({
               path: '/Record/Table/',
               redirect: '/Record/Table/PlateRecognition'
             },
-            // {
-            //   path: 'TrafficFlow',
-            //   name: 'tableTFA',
-            //   component: TrafficFlowTable,
-            //   meta: { requiresAuth: true },
-            // },
             {
               path: 'PlateRecognition',
               name: 'tableLPDR',
               component: PlateRecognitionTable,
               meta: { requiresAuth: true },
             },
+            // {
+            //   path: 'TrafficFlow',
+            //   name: 'tableTFA',
+            //   component: TrafficFlowTable,
+            //   meta: { requiresAuth: true },
+            // },
             // {
             //   path: 'violation',
             //   name: 'tableVD',
@@ -69,27 +103,14 @@ const router = createRouter({
     },
 
 
+
     {
       path: '/:pathMatch(.*)*',
+      name: 'NotFound',
       redirect: '/'
+      // component: NotFound
     }
 
-
-
-    // default route
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: HomeView
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue')
-    // }
   ]
 })
 
