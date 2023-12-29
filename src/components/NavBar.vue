@@ -224,11 +224,10 @@ const seleLanguage = (index: number) => {
 
 const toggleUserBox = () => {
   ifShowUserBox.value = !ifShowUserBox.value
+
   if (ifShowUserBox.value) {
-    // 添加點擊事件監聽器
     document.addEventListener("click", closeUserBoxOnClickOutside);
   } else {
-    // 移除點擊事件監聽器
     document.removeEventListener("click", closeUserBoxOnClickOutside);
   }
 }
@@ -262,24 +261,34 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
     </div>
     <div class="nav">
 
-      <div class="nav__left">
-        <!-- <router-link key='live' :to="{ name: 'live', query: { id: selectedChannelId } }" class="nav__left__item"
-          :class="{ 'selected': route.name === 'live' }">{{ $t("channel.nav_name") }}</router-link>
-        <router-link v-if="authStatus" key='gis' :to="{ name: 'gis', query: { id: selectedChannelId } }"
-          class="nav__left__item" :class="{ 'selected': route.name === 'gis' }">{{ $t("gis") }}</router-link>
-        <div v-else class="nav__left__item notAllowed">{{ $t("gis") }}</div>
-        <div v-if="route.path.includes('Record')" class="nav__left__item"
-          :class="{ 'selected': route.path.includes('Table') }">{{ $t("record.nav_name") }}
-        </div>
-        <router-link v-else @click="getCurrentRouteName" key='record' :to="{ name: 'tableTFA' }" class="nav__left__item"
-          :class="{ 'selected': route.path.includes('Table') }">{{ $t("record.nav_name") }}</router-link>
-        <router-link key='monitor' :to="{ name: 'monitor' }" class="nav__left__item"
-          :class="{ 'selected': route.name === 'monitor' }">{{ $t("monitor.nav_name") }}</router-link>
-        <router-link key='blockList' :to="{ name: 'blockList' }" class="nav__left__item"
-          :class="{ 'selected': route.name === 'blockList' }">{{ $t("blockList.nav_name") }}</router-link> -->
-      </div>
+        <div class="nav__left">
 
-      <div class="nav__right">
+
+
+          <!--
+          <router-link key='live' :to="{ name: 'live', query: { id: selectedChannelId } }" class="nav__left__item"
+            :class="{ 'selected': route.name === 'live' }">{{ $t("channel.nav_name") }}</router-link>
+
+          <router-link v-if="authStatus" key='gis' :to="{ name: 'gis', query: { id: selectedChannelId } }"
+            class="nav__left__item" :class="{ 'selected': route.name === 'gis' }">{{ $t("gis") }}</router-link>
+          <div v-else class="nav__left__item notAllowed">{{ $t("gis") }}</div>
+          <div v-if="route.path.includes('Record')" class="nav__left__item"
+            :class="{ 'selected': route.path.includes('Table') }">{{ $t("record.nav_name") }}
+          </div>
+
+          <router-link v-else @click="getCurrentRouteName" key='record' :to="{ name: 'tableTFA' }" class="nav__left__item"
+            :class="{ 'selected': route.path.includes('Table') }">{{ $t("record.nav_name") }}</router-link>
+
+          <router-link key='monitor' :to="{ name: 'monitor' }" class="nav__left__item"
+            :class="{ 'selected': route.name === 'monitor' }">{{ $t("monitor.nav_name") }}</router-link>
+
+          <router-link key='blockList' :to="{ name: 'blockList' }" class="nav__left__item"
+            :class="{ 'selected': route.name === 'blockList' }">{{ $t("blockList.nav_name") }}</router-link>
+          -->
+
+        </div>
+
+        <div class="nav__right">
 
         <!-- lang menu-->
         <VTooltip>
@@ -354,9 +363,8 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
           </li>
           <li @click="logout" class="user-box-item"><img alt="img failed" src="\logout.svg">{{ $t("Log_out") }}</li>
         </ul>
+
       </div>
-
-
     </div>
   </div>
 </template>

@@ -23,7 +23,12 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
+
+  <!-- <component :is="$route.meta.layout">
+  </component> -->
+
   <RouterView />
+
   <!-- <Transition>
     <AboutModal v-if="isAboutModalOpen" />
   </Transition> -->
