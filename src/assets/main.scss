@@ -2,126 +2,128 @@
 @import "./swalModal.scss";
 @import "./style.scss";
 
-@font-face {
-  font-family: 'Inter';
-  src: url('../assets/fonts/Inter.ttf') format('truetype');
-  /* Add additional formats if needed */
-}
-
-body {
-  overflow-y: hidden;
-  font-family: 'Inter';
-}
-
-#app {
-  width: 100vw;
-  color: #FFFFFF;
-  font-weight: 500;
-}
-
-header {
-  width: 100vw;
-  height: 5vh;
-  min-height: 2.5rem;
-  background: #3B414A;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-main {
-  width: 100vw;
-  height: 95vh;
-  display: flex;
-}
-
-.sidebar {
-  background-color: #323940;
-  width: 26vw;
-  height: 100%;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.content {
-  background-color: #2A3036;
-  width: 74vw;
-  height: 100%;
-  padding: 1rem;
-}
-
-.record,
-.blockList {
-  background-color: #2A3036;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    width: 83vw;
-    height: 88vh;
-  }
-}
-
-.scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #757575 #4F4F4F;
 
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+// @font-face {
+//   font-family: 'Inter';
+//   src: url('../assets/fonts/Inter.ttf') format('truetype');
+//   /* Add additional formats if needed */
+// }
 
-  // &::-webkit-scrollbar:horizontal {
-  //   display: none;
-  // }
-  // bar的樣式
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: rgb(117, 117, 117);
-  }
+// body {
+//   overflow-y: hidden;
+//   font-family: 'Inter';
+// }
 
-  &::-webkit-scrollbar-track {
-    background-color: rgb(79, 79, 79);
-  }
-}
+// #app {
+//   width: 100vw;
+//   color: #FFFFFF;
+//   font-weight: 500;
+// }
 
-button {
-  font-family: 'Inter';
-}
+// header {
+//   width: 100vw;
+//   height: 5vh;
+//   min-height: 2.5rem;
+//   background: #3B414A;
+//   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+// }
 
-.btn:hover {
-  background: #656C74;
-}
+// main {
+//   width: 100vw;
+//   height: 95vh;
+//   display: flex;
+// }
 
-.btn:active {
-  background: #3A9376;
-}
+// .sidebar {
+//   background-color: #323940;
+//   width: 26vw;
+//   height: 100%;
+//   padding: 1.5rem;
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.btn:disabled {
-  background: #515764;
-  opacity: 0.36;
-  cursor: default;
-}
+// .content {
+//   background-color: #2A3036;
+//   width: 74vw;
+//   height: 100%;
+//   padding: 1rem;
+// }
 
-.btn-disabled {
-  opacity: 0.36;
-  cursor: not-allowed;
-}
+// .record,
+// .blockList {
+//   background-color: #2A3036;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-.taiwan-map-container .taiwan-map-container-inner .taiwan-map-logo-container {
-  display: none !important;
-}
+//   &__container {
+//     display: flex;
+//     flex-direction: column;
+//     width: 83vw;
+//     height: 88vh;
+//   }
+// }
 
-div#map {
-  &>div.gomp-control-container>div.gomp-ctrl-bottom-left>div.gomp-ctrl>a.gomp-ctrl-logo {
-    display: none !important;
-    background-image: '' !important;
-  }
+// .scrollbar {
+//   scrollbar-width: thin;
+//   scrollbar-color: #757575 #4F4F4F;
 
-  &>.gomp-control-container>.gomp-ctrl-bottom-right {
-    display: none !important;
-  }
-}
+
+//   &::-webkit-scrollbar {
+//     width: 8px;
+//     height: 8px;
+//   }
+
+//   // &::-webkit-scrollbar:horizontal {
+//   //   display: none;
+//   // }
+//   // bar的樣式
+//   &::-webkit-scrollbar-thumb {
+//     border-radius: 3px;
+//     background-color: rgb(117, 117, 117);
+//   }
+
+//   &::-webkit-scrollbar-track {
+//     background-color: rgb(79, 79, 79);
+//   }
+// }
+
+// button {
+//   font-family: 'Inter';
+// }
+
+// .btn:hover {
+//   background: #656C74;
+// }
+
+// .btn:active {
+//   background: #3A9376;
+// }
+
+// .btn:disabled {
+//   background: #515764;
+//   opacity: 0.36;
+//   cursor: default;
+// }
+
+// .btn-disabled {
+//   opacity: 0.36;
+//   cursor: not-allowed;
+// }
+
+// .taiwan-map-container .taiwan-map-container-inner .taiwan-map-logo-container {
+//   display: none !important;
+// }
+
+// div#map {
+//   &>div.gomp-control-container>div.gomp-ctrl-bottom-left>div.gomp-ctrl>a.gomp-ctrl-logo {
+//     display: none !important;
+//     background-image: '' !important;
+//   }
+
+//   &>.gomp-control-container>.gomp-ctrl-bottom-right {
+//     display: none !important;
+//   }
+// }

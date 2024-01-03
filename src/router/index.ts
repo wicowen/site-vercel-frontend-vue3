@@ -2,16 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import LoginView from '@/views/LoginView.vue'
 
+const DemoView = () => import('@/views/DemoView.vue')
+
+const LicenseView = () => import('@/views/LicenseView.vue')
+const LicenseTable = () => import('@/components/License/LicenseTable.vue')
+const LicenseListTable = () => import('@/components/License/LicenseListTable.vue')
+
+
 const RecordView = () => import('@/views/RecordView.vue')
 const RecordTable = () => import('@/components/Record/RecordTable.vue')
 const PlateRecognitionTable = () => import('@/components/Record/PlateRecognitionTable.vue')
 // const TrafficFlowTable = () => import('@/components/Record/TrafficFlowTable.vue')
 // const violationTable = () => import('@/components/Record/violationTable.vue')
 
-
-const LicenseView = () => import('@/views/LicenseView.vue')
-const LicenseTable = () => import('@/components/License/LicenseTable.vue')
-const LicenseListTable = () => import('@/components/License/LicenseListTable.vue')
 
 
 const router = createRouter({
@@ -22,6 +25,14 @@ const router = createRouter({
       path: '/Login',
       name: 'Login',
       component: LoginView
+    },
+
+
+    {
+      path: '/Demo',
+      name: 'Demo',
+      component: DemoView,
+      // meta: { requiresAuth: true, layout: 'defaultLayout' },
     },
 
     {
@@ -101,7 +112,6 @@ const router = createRouter({
         // }
       ]
     },
-
 
 
     {
