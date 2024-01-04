@@ -263,8 +263,6 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
 
         <div class="nav__left">
 
-
-
           <!--
           <router-link key='live' :to="{ name: 'live', query: { id: selectedChannelId } }" class="nav__left__item"
             :class="{ 'selected': route.name === 'live' }">{{ $t("channel.nav_name") }}</router-link>
@@ -370,9 +368,11 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
 </template>
 
 <style scoped lang="scss">
+
 .container {
   display: flex;
   height: 100%;
+  // background-color: #3B414A;
 }
 
 .brand {
