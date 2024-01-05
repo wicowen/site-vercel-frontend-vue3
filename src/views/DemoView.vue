@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import NavBar from '@/components/NavBar.vue'
-// import TableToolbar from '@/components/License/TableToolbar.vue'
 
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log('demo mounted')
+
+  // console.log('$route.meta.layout', this.$route)
+})
+
 
 interface RuleForm {
   name: string
@@ -152,154 +159,147 @@ const gridData = [
 
 </script>
 
+
+
+
 <template>
+  <div class="demo__container">
+    <!-- <TableToolbar /> -->
+    <!-- <RouterView /> -->
 
-  <header class="header__container">
-    <NavBar />
-  </header>
+    <!-- dialog demo -->
+    <div class="dialog__demo__container" style="padding: 5px;">
 
-  <main class="container">
-    <div class="demo__container">
-      <!-- <TableToolbar /> -->
-      <!-- <RouterView /> -->
+      <el-button text @click="dialogTableVisible = true">
+        open a Table nested Dialog
+      </el-button>
 
-      <!-- dialog demo -->
-      <div class="dialog__demo__container" style="padding: 5px;">
+      <el-dialog v-model="dialogTableVisible" title="Shipping address">
+        <el-table :data="gridData">
+          <el-table-column property="date" label="Date" width="150" />
+          <el-table-column property="name" label="Name" width="200" />
+          <el-table-column property="address" label="Address" />
+        </el-table>
+      </el-dialog>
 
-        <el-button text @click="dialogTableVisible = true">
-          open a Table nested Dialog
-        </el-button>
+      <!-- Form -->
+      <el-button text @click="dialogFormVisible = true">
+        open a Form nested Dialog
+      </el-button>
 
-        <el-dialog v-model="dialogTableVisible" title="Shipping address">
-          <el-table :data="gridData">
-            <el-table-column property="date" label="Date" width="150" />
-            <el-table-column property="name" label="Name" width="200" />
-            <el-table-column property="address" label="Address" />
-          </el-table>
-        </el-dialog>
+      <el-dialog v-model="dialogFormVisible" title="Shipping address">
+        <el-form :model="form">
+          <el-form-item label="Promotion name" :label-width="formLabelWidth">
+            <el-input v-model="form.name" autocomplete="off" />
+          </el-form-item>
+          <el-form-item label="Zones" :label-width="formLabelWidth">
+            <el-select v-model="form.region" placeholder="Please select a zone">
+              <el-option label="Zone No.1" value="shanghai" />
+              <el-option label="Zone No.2" value="beijing" />
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">Cancel</el-button>
+            <el-button type="primary" @click="dialogFormVisible = false">
+              Confirm
+            </el-button>
+          </span>
+        </template>
+      </el-dialog>
+      <!-- Form -->
 
-        <!-- Form -->
-        <el-button text @click="dialogFormVisible = true">
-          open a Form nested Dialog
-        </el-button>
-
-        <el-dialog v-model="dialogFormVisible" title="Shipping address">
-          <el-form :model="form">
-            <el-form-item label="Promotion name" :label-width="formLabelWidth">
-              <el-input v-model="form.name" autocomplete="off" />
-            </el-form-item>
-            <el-form-item label="Zones" :label-width="formLabelWidth">
-              <el-select v-model="form.region" placeholder="Please select a zone">
-                <el-option label="Zone No.1" value="shanghai" />
-                <el-option label="Zone No.2" value="beijing" />
-              </el-select>
-            </el-form-item>
-          </el-form>
-          <template #footer>
-            <span class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">Cancel</el-button>
-              <el-button type="primary" @click="dialogFormVisible = false">
-                Confirm
-              </el-button>
-            </span>
-          </template>
-        </el-dialog>
-        <!-- Form -->
-
-        <hr />
-      </div>
-      <!-- dialog demo -->
-
-
-
-
-
-      <!-- form demo -->
-      <el-form
-        ref="ruleFormRef"
-        :model="ruleForm"
-        :rules="rules"
-        label-width="120px"
-        class="demo-ruleForm"
-        :size="formSize"
-        status-icon
-      >
-        <el-form-item label="Activity name" prop="name">
-          <el-input v-model="ruleForm.name" />
-        </el-form-item>
-        <el-form-item label="Activity zone" prop="region">
-          <el-select v-model="ruleForm.region" placeholder="Activity zone">
-            <el-option label="Zone one" value="shanghai" />
-            <el-option label="Zone two" value="beijing" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="Activity count" prop="count">
-          <el-select-v2
-            v-model="ruleForm.count"
-            placeholder="Activity count"
-            :options="options"
-          />
-        </el-form-item>
-        <el-form-item label="Activity time" required>
-          <el-col :span="11">
-            <el-form-item prop="date1">
-              <el-date-picker
-                v-model="ruleForm.date1"
-                type="date"
-                label="Pick a date"
-                placeholder="Pick a date"
-                style="width: 100%"
-              />
-            </el-form-item>
-          </el-col>
-          <el-col class="text-center" :span="2">
-            <span class="text-gray-500">-</span>
-          </el-col>
-          <el-col :span="11">
-            <el-form-item prop="date2">
-              <el-time-picker
-                v-model="ruleForm.date2"
-                label="Pick a time"
-                placeholder="Pick a time"
-                style="width: 100%"
-              />
-            </el-form-item>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="Instant delivery" prop="delivery">
-          <el-switch v-model="ruleForm.delivery" />
-        </el-form-item>
-        <el-form-item label="Activity type" prop="type">
-          <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox label="Online activities" name="type" />
-            <el-checkbox label="Promotion activities" name="type" />
-            <el-checkbox label="Offline activities" name="type" />
-            <el-checkbox label="Simple brand exposure" name="type" />
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item label="Resources" prop="resource">
-          <el-radio-group v-model="ruleForm.resource">
-            <el-radio label="Sponsorship" />
-            <el-radio label="Venue" />
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="Activity form" prop="desc">
-          <el-input v-model="ruleForm.desc" type="textarea" />
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">
-            Create
-          </el-button>
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
-        </el-form-item>
-      </el-form>
-      <!-- form demo -->
-
+      <hr />
     </div>
-  </main>
+    <!-- dialog demo -->
 
-  <footer>
-  </footer>
+
+
+
+
+    <!-- form demo -->
+    <el-form
+      ref="ruleFormRef"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="120px"
+      class="demo-ruleForm"
+      :size="formSize"
+      status-icon
+    >
+      <el-form-item label="Activity name" prop="name">
+        <el-input v-model="ruleForm.name" />
+      </el-form-item>
+      <el-form-item label="Activity zone" prop="region">
+        <el-select v-model="ruleForm.region" placeholder="Activity zone">
+          <el-option label="Zone one" value="shanghai" />
+          <el-option label="Zone two" value="beijing" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Activity count" prop="count">
+        <el-select-v2
+          v-model="ruleForm.count"
+          placeholder="Activity count"
+          :options="options"
+        />
+      </el-form-item>
+      <el-form-item label="Activity time" required>
+        <el-col :span="11">
+          <el-form-item prop="date1">
+            <el-date-picker
+              v-model="ruleForm.date1"
+              type="date"
+              label="Pick a date"
+              placeholder="Pick a date"
+              style="width: 100%"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col class="text-center" :span="2">
+          <span class="text-gray-500">-</span>
+        </el-col>
+        <el-col :span="11">
+          <el-form-item prop="date2">
+            <el-time-picker
+              v-model="ruleForm.date2"
+              label="Pick a time"
+              placeholder="Pick a time"
+              style="width: 100%"
+            />
+          </el-form-item>
+        </el-col>
+      </el-form-item>
+      <el-form-item label="Instant delivery" prop="delivery">
+        <el-switch v-model="ruleForm.delivery" />
+      </el-form-item>
+      <el-form-item label="Activity type" prop="type">
+        <el-checkbox-group v-model="ruleForm.type">
+          <el-checkbox label="Online activities" name="type" />
+          <el-checkbox label="Promotion activities" name="type" />
+          <el-checkbox label="Offline activities" name="type" />
+          <el-checkbox label="Simple brand exposure" name="type" />
+        </el-checkbox-group>
+      </el-form-item>
+      <el-form-item label="Resources" prop="resource">
+        <el-radio-group v-model="ruleForm.resource">
+          <el-radio label="Sponsorship" />
+          <el-radio label="Venue" />
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="Activity form" prop="desc">
+        <el-input v-model="ruleForm.desc" type="textarea" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm(ruleFormRef)">
+          Create
+        </el-button>
+        <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+      </el-form-item>
+    </el-form>
+    <!-- form demo -->
+
+  </div>
 </template>
 
 <style lang="scss" scoped>

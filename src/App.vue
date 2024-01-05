@@ -1,7 +1,9 @@
 <script setup lang="ts">
 
+import AppLayout from '@/layouts/AppLayout.vue'
+
 // import { onMounted } from 'vue'
-import { RouterView } from 'vue-router'
+// import { RouterView } from 'vue-router'
 // import { storeToRefs } from 'pinia'
 // import { useGeneralStore } from '@/stores'
 
@@ -24,10 +26,12 @@ import { RouterView } from 'vue-router'
 
 <template>
 
+  <AppLayout />
+
   <!-- <component :is="$route.meta.layout">
   </component> -->
 
-  <RouterView />
+  <!-- <RouterView /> -->
 
   <!-- <Transition>
     <AboutModal v-if="isAboutModalOpen" />

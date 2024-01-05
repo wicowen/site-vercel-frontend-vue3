@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import LoginView from '@/views/LoginView.vue'
 
-const DemoView = () => import('@/views/DemoView.vue')
+// const DemoView = () => import('@/views/DemoView.vue')
 
 const LicenseView = () => import('@/views/LicenseView.vue')
 const LicenseTable = () => import('@/components/License/LicenseTable.vue')
@@ -15,7 +15,7 @@ const PlateRecognitionTable = () => import('@/components/Record/PlateRecognition
 // const TrafficFlowTable = () => import('@/components/Record/TrafficFlowTable.vue')
 // const violationTable = () => import('@/components/Record/violationTable.vue')
 
-
+// import AppLayoutDefault from '@/layouts/AppLayoutDefault.vue'
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,12 +27,11 @@ const router = createRouter({
       component: LoginView
     },
 
-
     {
       path: '/Demo',
       name: 'Demo',
-      component: DemoView,
-      // meta: { requiresAuth: true, layout: 'defaultLayout' },
+      meta: { layout: 'AppLayoutDefault' },
+      component: () => import('@/views/DemoView.vue'),
     },
 
     {

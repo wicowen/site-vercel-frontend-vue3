@@ -21,18 +21,33 @@ body {
 //   font-weight: 500;
 // }
 
-.header__container {
-  width: 100vw;
-  height: 5vh;
-  min-height: 2.5rem;
-  background: #3B414A;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+.header {
+  &__container {
+    width: 100vw;
+    height: 5vh;
+    min-height: 2.5rem;
+    background: #3B414A;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
 }
 
-main {
-  width: 100vw;
-  height: 95vh;
-  display: flex;
+.main {
+  &__container {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+  }
+}
+
+.footer {
+  &__container {
+    width: 100vw;
+    height: 5vh;
+    // display: flex;
+    // min-height: 2.5rem;
+    background: #3B414A;
+    // box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .sidebar {

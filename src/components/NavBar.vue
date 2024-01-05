@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { ref, onBeforeMount, onMounted, onUnmounted, computed } from 'vue'
-// import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 // import { useGeneralStore, useChannelStore, useAuthStore, useRecordStore, useNotifyStore } from '@/stores'
 import { useGeneralStore, useAuthStore, useNotifyStore } from '@/stores'
@@ -17,8 +17,8 @@ import i18n from '@/plugins/i18n'
 // let stompClientInform = new Client()
 // let stompClientSentinel = new Client()
 
-// const route = useRoute()
-// const router = useRouter()
+const route = useRoute()
+const router = useRouter()
 // let config: ConfigItem
 
 
@@ -173,7 +173,8 @@ onUnmounted(() => {
   document.removeEventListener("click", closeLanguageBoxOnClickOutside);
   document.removeEventListener("click", closeUserBoxOnClickOutside);
 })
-//測試用
+
+
 const toggleLanguageBox = () => {
   ifShowLanguageBox.value = !ifShowLanguageBox.value
   if (ifShowLanguageBox.value) {
@@ -247,21 +248,31 @@ const closeUserBoxOnClickOutside = (event: MouseEvent) => {
   }
 }
 
-// const backHome = () => {
-//   // useChannelStore().setSelectedChannelId('')
-//   router.push('/')
-// }
+const backHome = () => {
+  // useChannelStore().setSelectedChannelId('')
+  router.push('/')
+}
 </script>
 
 <template>
   <div class="container">
     <div class="brand">
       <!-- <img @click="backHome" alt="img failed" class="brand__logo" src="\Logo.svg"> -->
-      <img alt="img" class="brand__logo" src="https://placehold.co/204x86?text=Logo">
+      <img @click="backHome" alt="img" class="brand__logo" src="https://placehold.co/204x86?text=Logo">
     </div>
     <div class="nav">
 
         <div class="nav__left">
+
+          <!-- <a href="#" class="nav__left__item">Dialog</a> -->
+          <!-- <a href="#" class="nav__left__item">Form</a> -->
+
+          
+          <a href="#" class="nav__left__item">[Still Working 🛠]</a>
+          <a href="#" class="nav__left__item">Products</a>
+          <a href="#" class="nav__left__item">Features</a>
+          <a href="#" class="nav__left__item">Entitlements</a>
+          <a href="#" class="nav__left__item">Customers</a>
 
           <!--
           <router-link key='live' :to="{ name: 'live', query: { id: selectedChannelId } }" class="nav__left__item"
