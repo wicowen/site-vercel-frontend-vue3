@@ -19,6 +19,7 @@ watch(() => route.meta?.layout as string | undefined, async (metaLayout) => {
   } catch (e) {
     layout.value = markRaw(AppLayoutDefault)
   }
+
 }, { immediate: true })
 </script>
 

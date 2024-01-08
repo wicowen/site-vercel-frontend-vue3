@@ -35,6 +35,36 @@ const router = createRouter({
     },
 
     {
+      path: '/Demo/Public',
+      name: 'Demo-Public',
+      meta: { layout: 'AppLayoutPublic' },
+      component: () => import('@/views/DemoView.vue'),
+    },
+
+    {
+      path: '/Demo/Login',
+      name: 'Demo-Login',
+      meta: { layout: 'AppLayoutPublic' },
+      component: () => import('@/views/DemoView.vue'),
+    },
+
+    {
+      path: '/Demo/User',
+      name: 'Demo-User',
+      meta: { layout: 'AppLayoutUser' },
+      component: () => import('@/views/DemoView.vue'),
+    },
+
+    {
+      path: '/Demo/Admin',
+      name: 'Demo-Admin',
+      meta: { layout: 'AppLayoutAdmin' },
+      component: () => import('@/views/DemoView.vue'),
+    },
+
+
+
+    {
       path: '/License',
       name: 'License',
       component: LicenseView,

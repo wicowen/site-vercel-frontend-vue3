@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue'
-// import TableToolbar from '@/components/License/TableToolbar.vue'
 
 // import { onMounted } from 'vue'
 // onMounted(() => {
@@ -11,6 +10,7 @@ import NavBar from '@/components/NavBar.vue'
 <template>
   <header class="header__container">
     <NavBar />
+    <!-- default layout header -->
   </header>
 
   <main class="main__container">
@@ -21,7 +21,7 @@ import NavBar from '@/components/NavBar.vue'
   </main>
 
   <footer class="footer__container">
-    <!-- main layout footer -->
+    default layout footer
   </footer>
 </template>
 

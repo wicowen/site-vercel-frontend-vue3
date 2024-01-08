@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import AppLayout from '@/layouts/AppLayout.vue'
+import LayoutLoader from '@/layouts/LayoutLoader.vue'
 
 // import { onMounted } from 'vue'
 // import { RouterView } from 'vue-router'
@@ -26,7 +26,7 @@ import AppLayout from '@/layouts/AppLayout.vue'
 
 <template>
 
-  <AppLayout />
+  <LayoutLoader />
 
   <!-- <component :is="$route.meta.layout">
   </component> -->
